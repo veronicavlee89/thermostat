@@ -26,11 +26,31 @@ class Thermostat {
       this.temperature--;
     }
   }
+
   powerSavingToggle() {
     if (this.powerSaving === true) {
       this.powerSaving = false;
     } else {
       this.powerSaving = true;
     }
+  }
+
+  reset() {
+    this.temperature = 20;
+  }
+
+  energyUsage() {
+    switch (true) {
+      case this.temperature < 18:
+        var usage = "low-usage";
+        break;
+      case this.temperature <= 25:
+        var usage = "medium-usage";
+        break;
+      case this.temperature > 25:
+        var usage = "high-usage";
+        break;
+    }
+    return usage;
   }
 }

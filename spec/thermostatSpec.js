@@ -79,4 +79,59 @@ describe("thermostat", function () {
       expect(thermostat.temperature).toEqual(32);
     });
   });
+
+  describe("Power Saving Mode", function () {
+    it("Checks that power saving mode is on by default", function () {
+      expect(thermostat.powerSaving).toEqual(true);
+    });
+    it("Checks that power saving mode is off when we use the toggle", function () {
+      thermostat.powerSavingToggle();
+      expect(thermostat.powerSaving).toEqual(false);
+    });
+    it("Checks that power saving mode is on when we use the toggle from off", function () {
+      thermostat.powerSavingToggle();
+      thermostat.powerSavingToggle();
+      expect(thermostat.powerSaving).toEqual(true);
+    });
+  });
+
+  describe("reset", function () {
+    it("resets the temperature to 20 when we have turned the thermostat up", function () {
+      thermostat.up();
+      thermostat.up();
+      thermostat.up();
+      thermostat.reset();
+      expect(thermostat.temperature).toEqual(20);
+    });
+  });
+
+  describe("energyUsage", function () {
+    it("gives us medium-usage when temperature is between 18-25", function () {
+      expect(thermostat.energyUsage()).toEqual("medium-usage");
+    });
+    it("gives us low-usage when temperature is below 18", function () {
+      thermostat.down();
+      thermostat.down();
+      thermostat.down();
+      thermostat.down();
+      expect(thermostat.energyUsage()).toEqual("low-usage");
+    });
+    it("gives us high-usage when temperature is above 25", function () {
+      thermostat.powerSavingToggle();
+      thermostat.up();
+      thermostat.up();
+      thermostat.up();
+      thermostat.up();
+      thermostat.up();
+      thermostat.up();
+      thermostat.up();
+      thermostat.up();
+      thermostat.up();
+      thermostat.up();
+      thermostat.up();
+      thermostat.up();
+      thermostat.up();
+      expect(thermostat.energyUsage()).toEqual("high-usage");
+    });
+  });
 });
