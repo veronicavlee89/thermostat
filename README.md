@@ -18,5 +18,11 @@ Call function | 21
 3. Decrease Temp with Down function
    assume that when we use the down function it decreases temp by 1
 
+4. Set minimum temperature to 18 degrees.
+
+5. Set maximum temperature to 25 degrees with POWERSAVING mode on.
+
+6. Maximum temperature is 32 when POWERSAVING mode is off.
+
 Input | Output
 Call function | 19
