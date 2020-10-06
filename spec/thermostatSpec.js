@@ -34,48 +34,28 @@ describe("thermostat", function () {
     });
   });
   describe("minimum temperature set to 10", function () {
-    it("Use down function three times and see the minimum temperature", function () {
-      thermostat.down();
-      thermostat.down();
-      thermostat.down();
-      thermostat.down();
-      thermostat.down();
-      thermostat.down();
-      thermostat.down();
-      thermostat.down();
-      thermostat.down();
-      thermostat.down();
-      thermostat.down();
+    it("Use down function eleven times and see the minimum temperature", function () {
+      for (var i = 0; i < 11; i++) {
+        thermostat.down();
+      }
+
       expect(thermostat.temperature).toEqual(10);
     });
   });
   describe("maximum temperature with powersaving on is 25 degrees", function () {
     it("Use up function six times and see max temperature", function () {
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
+      for (var i = 0; i < 6; i++) {
+        thermostat.up();
+      }
       expect(thermostat.temperature).toEqual(25);
     });
   });
   describe("maximum temperature with powersaving off is 32 degrees", function () {
     it("Use up function 13 times and see max temperature", function () {
       thermostat.powerSavingToggle();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
+      for (var i = 0; i < 13; i++) {
+        thermostat.up();
+      }
       expect(thermostat.temperature).toEqual(32);
     });
   });
@@ -118,19 +98,9 @@ describe("thermostat", function () {
     });
     it("gives us high-usage when temperature is above 25", function () {
       thermostat.powerSavingToggle();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
-      thermostat.up();
+      for (var i = 0; i < 13; i++) {
+        thermostat.up();
+      }
       expect(thermostat.energyUsage()).toEqual("high-usage");
     });
   });
