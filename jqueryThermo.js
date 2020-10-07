@@ -25,6 +25,13 @@ $(document).ready(function () {
 
   function updateTemperature() {
     $("#temperature").text(thermostat.temperature);
+    if(thermostat.energyUsage() === 'low-usage') {
+      $('#circle').css('background', 'green')
+    } else if(thermostat.energyUsage() === 'medium-usage') {
+      $('#circle').css('background', 'black')
+    } else {
+      $('#circle').css('background', 'red')
+    }
   }
 
   $("#city").submit(function (event) {

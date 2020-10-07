@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="public/styles.css">
     <title>Thermostat</title>
     <h2>Thermostat</h2>
   </head>
@@ -11,7 +12,8 @@
         <input type='submit'></input>
       </form>
       Outside temp: <h1 id="outside-temperature"></h1><br>
-      Thermostat temp: <h1 id="temperature"></h1>
+
+      <div id="circle" class="circle"><h1 id="temperature"></h1></div>
       <p>
         <button id="temperature-up">+</button>
         <button id="temperature-down">-</button>
