@@ -7,6 +7,10 @@ class Thermostat {
     this.powerSaving = true;
   }
 
+  psStatus() {
+    return this.powerSaving === true ? "On" : "Off";
+  }
+
   up() {
     if (
       this.temperature < this.maximumPowerSavingOn &&

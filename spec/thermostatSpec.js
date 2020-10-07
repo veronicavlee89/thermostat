@@ -104,4 +104,10 @@ describe("thermostat", function () {
       expect(thermostat.energyUsage()).toEqual("high-usage");
     });
   });
+
+  describe("psStatus", function () {
+    it("shows the power saving mode is on by default", function () {
+      expect(thermostat.psStatus()).toEqual("On");
+    });
+  });
 });

@@ -19,7 +19,7 @@ $(document).ready(function () {
 
   $("#powersaving-toggle").click(function () {
     thermostat.powerSavingToggle();
-    $("#power-saving").text("on");
+    $("#power-saving-status").text(thermostat.psStatus());
     updateTemperature();
   });
 
