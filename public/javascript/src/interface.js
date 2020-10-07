@@ -24,7 +24,13 @@ $(document).ready(function () {
   });
 
   function updateTemperature() {
+    thermostat.getCurrentTemperature();
     $("#temperature").text(thermostat.temperature);
+
+    // thermostat.getCurrentTemperature(function(data) {
+    //   $("#temperature").text(data.temperature);
+    // })
+
     if(thermostat.energyUsage() === 'low-usage') {
       $('#circle').css('background', 'green')
     } else if(thermostat.energyUsage() === 'medium-usage') {

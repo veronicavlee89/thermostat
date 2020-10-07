@@ -11,6 +11,14 @@ class Thermostat {
     return this.powerSaving === true ? "On" : "Off";
   }
 
+  getCurrentTemperature() {
+    $.get('/temperature', function(res) {
+      var data = JSON.parse(res)
+      console.log(data.temperature)
+      this.temperature = data.temperature
+    });
+  }
+
   up() {
     if (
       this.temperature < this.maximumPowerSavingOn &&
