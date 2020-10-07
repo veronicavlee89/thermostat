@@ -40,11 +40,4 @@ $(document).ready(function () {
       }
     );
   });
-  /*
-  $.get(
-    "http://api.openweathermap.org/data/2.5/weather?q=london&appid=16f42bf1b7c2d1ff6c5fba304885dc11",
-    function (data) {
-      $("#outside-temperature").text(Math.floor(data.main.temp - 273.15));
-    }
-  );*/
 });
