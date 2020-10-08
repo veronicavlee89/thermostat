@@ -5,17 +5,15 @@ $(document).ready(function () {
   $("#temperature-up").click(function () {
     let currentTemperature = parseInt($('#temperature').text())
     thermostat.up(currentTemperature, updateTemperature);
-    updateTemperature();
   });
 
   $("#temperature-down").click(function () {
-    thermostat.down();
-    updateTemperature();
+    let currentTemperature = parseInt($('#temperature').text())
+    thermostat.down(currentTemperature, updateTemperature);
   });
 
   $("#temperature-reset").click(function () {
-    thermostat.reset();
-    updateTemperature();
+    thermostat.reset(updateTemperature);
   });
 
   $("#powersaving-toggle").click(function () {

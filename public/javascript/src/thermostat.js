@@ -32,9 +32,9 @@ class Thermostat {
     }
   }
 
-  down() {
-    if (this.temperature > this.minimum) {
-      this.temperature--;
+  down(currentTemperature, callback) {
+    if (currentTemperature > this.minimum) {
+      this._updateTemperature(currentTemperature - 1, callback);
     }
   }
 
@@ -46,8 +46,8 @@ class Thermostat {
     }
   }
 
-  reset() {
-    this.temperature = 20;
+  reset(callback) {
+    this._updateTemperature(20, callback);
   }
 
   energyUsage() {
