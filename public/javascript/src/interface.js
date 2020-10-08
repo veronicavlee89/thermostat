@@ -3,7 +3,8 @@ $(document).ready(function () {
   updateTemperature();
 
   $("#temperature-up").click(function () {
-    thermostat.up();
+    let currentTemperature = parseInt($('#temperature').text())
+    thermostat.up(currentTemperature, updateTemperature);
     updateTemperature();
   });
 
@@ -24,12 +25,9 @@ $(document).ready(function () {
   });
 
   function updateTemperature() {
-    thermostat.getCurrentTemperature();
-    $("#temperature").text(thermostat.temperature);
-
-    // thermostat.getCurrentTemperature(function(data) {
-    //   $("#temperature").text(data.temperature);
-    // })
+    thermostat.getCurrentTemperature(function(data) {
+      $('#temperature').text(data.temperature);
+    });
 
     if(thermostat.energyUsage() === 'low-usage') {
       $('#circle').css('background', 'green')

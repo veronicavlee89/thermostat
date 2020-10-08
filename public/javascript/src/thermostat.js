@@ -11,25 +11,24 @@ class Thermostat {
     return this.powerSaving === true ? "On" : "Off";
   }
 
-  getCurrentTemperature() {
+  getCurrentTemperature(callback) {
     $.get('/temperature', function(res) {
       var data = JSON.parse(res)
-      console.log(data.temperature)
-      this.temperature = data.temperature
+      callback(data);
     });
   }
 
-  up() {
+  up(currentTemperature, callback) {
     if (
-      this.temperature < this.maximumPowerSavingOn &&
+      currentTemperature < this.maximumPowerSavingOn &&
       this.powerSaving === true
     ) {
-      this.temperature++;
+      this._updateTemperature(currentTemperature + 1, callback);
     } else if (
-      this.temperature < this.maximumPowerSavingOff &&
+      currentTemperature < this.maximumPowerSavingOff &&
       this.powerSaving === false
     ) {
-      this.temperature++;
+      this._updateTemperature(currentTemperature + 1, callback);
     }
   }
 
@@ -64,5 +63,9 @@ class Thermostat {
         break;
     }
     return usage;
+  }
+
+  _updateTemperature(value, callback) {
+    $.post('/temperature', { temperature: value }, callback)
   }
 }

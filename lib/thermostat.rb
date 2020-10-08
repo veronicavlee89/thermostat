@@ -1,7 +1,7 @@
 class Thermostat 
 attr_reader :temperature 
     def initialize
-      @temperature = 22
+      @temperature = 20
     end
 
     def self.instance 
