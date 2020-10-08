@@ -50,19 +50,15 @@ class Thermostat {
     this._updateTemperature(20, callback);
   }
 
-  energyUsage() {
+  energyUsage(currentTemperature) {
     switch (true) {
-      case this.temperature < 18:
-        var usage = "low-usage";
-        break;
-      case this.temperature <= 25:
-        var usage = "medium-usage";
-        break;
-      case this.temperature > 25:
-        var usage = "high-usage";
-        break;
+      case currentTemperature < 18:
+        return "low-usage";
+      case currentTemperature <= 25:
+        return "medium-usage";
+      case currentTemperature > 25:
+        return "high-usage";
     }
-    return usage;
   }
 
   _updateTemperature(value, callback) {

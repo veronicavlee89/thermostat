@@ -25,15 +25,15 @@ $(document).ready(function () {
   function updateTemperature() {
     thermostat.getCurrentTemperature(function(data) {
       $('#temperature').text(data.temperature);
-    });
 
-    if(thermostat.energyUsage() === 'low-usage') {
-      $('#circle').css('background', 'green')
-    } else if(thermostat.energyUsage() === 'medium-usage') {
-      $('#circle').css('background', 'black')
-    } else {
-      $('#circle').css('background', 'red')
-    }
+      if(thermostat.energyUsage(data.temperature) === 'low-usage') {
+        $('#circle').css('background', 'green')
+      } else if(thermostat.energyUsage(data.temperature) === 'medium-usage') {
+        $('#circle').css('background', 'black')
+      } else {
+        $('#circle').css('background', 'red')
+      }
+    });
   }
 
   $("#city").submit(function (event) {
